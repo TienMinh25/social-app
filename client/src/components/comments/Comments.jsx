@@ -48,7 +48,7 @@ const Comments = ({ postId }) => {
                 <button onClick={handleClick}>Send</button>
             </div>
             {error
-                ? 'Something went wrong'
+                ? 'Be the first to comment'
                 : isLoading
                 ? 'loading'
                 : data.map((comment) => (
