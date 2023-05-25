@@ -31,7 +31,7 @@ const Post = ({ post }) => {
             return makeRequest.post('/likes', { postId: post.id });
         },
         {
-            onSuccess: () => {
+            onSuccess: () => { 
                 // Invalidate and refetch
                 queryClient.invalidateQueries(['likes']);
             },
