@@ -6,7 +6,7 @@
 - ReactJs, NodeJs(expressjs), Mysql
 - Other libraries:
   - mui, axios, @tanstack/react-query
-  - bcryptjs, jsonwebtoken, cors, nodemon
+  - bcryptjs, jsonwebtoken, cors, nodemon,...
  ```
 
 ### Before all, let's go over some of the main functions 😀
