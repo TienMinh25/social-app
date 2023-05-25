@@ -6,10 +6,9 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/authContext';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { makeRequest } from '../../axios';
-
 const Share = () => {
     const [file, setFile] = useState(null);
-    const [desc, setDesc] = useState(null);
+    const [desc, setDesc] = useState('');
 
     const upload = async () => {
         try {
@@ -21,6 +20,7 @@ const Share = () => {
             console.log(err);
         }
     };
+
     const { currentUser } = useContext(AuthContext);
 
     const queryClient = useQueryClient();
@@ -45,12 +45,13 @@ const Share = () => {
         setDesc('');
         setFile(null);
     };
+
     return (
         <div className="share">
             <div className="container">
                 <div className="top">
                     <div className="left">
-                        <img src={currentUser.profilePic} alt="" />
+                        <img src={'/upload/' + currentUser.profilePic} alt="" />
                         <input
                             type="text"
                             placeholder={`What's on your mind ${currentUser.name}?`}

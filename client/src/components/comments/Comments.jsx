@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import './comments.scss';
 import { AuthContext } from '../../context/authContext';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { makeRequest } from '../../axios';
 import moment from 'moment';
 
@@ -9,11 +9,11 @@ const Comments = ({ postId }) => {
     const [desc, setDesc] = useState('');
     const { currentUser } = useContext(AuthContext);
 
-    const { isLoading, error, data } = useQuery(['comments'], async () => {
-        await makeRequest.get('/comments?postId=' + postId).then((res) => {
+    const { isLoading, error, data } = useQuery(['comments'], () =>
+        makeRequest.get('/comments?postId=' + postId).then((res) => {
             return res.data;
-        });
-    });
+        }),
+    );
 
     const queryClient = useQueryClient();
 
@@ -34,23 +34,26 @@ const Comments = ({ postId }) => {
         mutation.mutate({ desc, postId });
         setDesc('');
     };
+
     return (
         <div className="comments">
             <div className="write">
-                <img src={currentUser.profilePic} alt="" />
+                <img src={'/upload/' + currentUser.profilePic} alt="" />
                 <input
                     type="text"
                     placeholder="write a comment"
-                    onChange={(e) => setDesc(e.target.value)}
                     value={desc}
+                    onChange={(e) => setDesc(e.target.value)}
                 />
                 <button onClick={handleClick}>Send</button>
             </div>
-            {isLoading
+            {error
+                ? 'Something went wrong'
+                : isLoading
                 ? 'loading'
                 : data.map((comment) => (
                       <div className="comment">
-                          <img src={comment.profilePic} alt="" />
+                          <img src={'/upload/' + comment.profilePic} alt="" />
                           <div className="info">
                               <span>{comment.name}</span>
                               <p>{comment.desc}</p>
