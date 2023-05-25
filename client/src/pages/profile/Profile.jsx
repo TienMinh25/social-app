@@ -1,114 +1,119 @@
-import './profile.scss';
-import FacebookTwoToneIcon from '@mui/icons-material/FacebookTwoTone';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import PinterestIcon from '@mui/icons-material/Pinterest';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import PlaceIcon from '@mui/icons-material/Place';
-import LanguageIcon from '@mui/icons-material/Language';
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import Posts from '../../components/posts/Posts';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useState } from 'react';
 import { makeRequest } from '../../axios';
-import { useLocation } from 'react-router-dom';
-import { Fragment, useContext } from 'react';
-import { AuthContext } from '../../context/authContext';
+import './update.scss';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
-const Profile = () => {
-    const { currentUser } = useContext(AuthContext);
-    const userId = parseInt(useLocation().pathname.split('/')[2]);
-    const { isLoading, error, data } = useQuery(['users'], async () => {
-        await makeRequest.get('/users/find/' + userId).then((res) => {
-            return res.data;
-        });
+const Update = ({ setOpenUpdate, user }) => {
+    const [cover, setCover] = useState(null);
+    const [profile, setProfile] = useState(null);
+    const [texts, setTexts] = useState({
+        email: user.email,
+        password: user.password,
+        name: user.name,
+        city: user.city,
+        website: user.website,
     });
 
-    const { isLoading: rIsLoading, data: relationshipData } = useQuery(['relationship'], async () => {
-        await makeRequest.get('/relationships?followedUserId=' + userId).then((res) => {
+    const upload = async (file) => {
+        console.log(file);
+        try {
+            const formData = new FormData();
+            formData.append('file', file);
+            const res = await makeRequest.post('/upload', formData);
             return res.data;
-        });
-    });
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const handleChange = (e) => {
+        setTexts((prev) => ({ ...prev, [e.target.name]: [e.target.value] }));
+    };
 
     const queryClient = useQueryClient();
 
     const mutation = useMutation(
-        (following) => {
-            if (following) return makeRequest.delete('/relationships?userId=' + userId);
-            return makeRequest.post('/relationship', { userId });
+        (user) => {
+            return makeRequest.put('/users', user);
         },
         {
             onSuccess: () => {
                 // Invalidate and refetch
-                queryClient.invalidateQueries(['relationship']);
+                queryClient.invalidateQueries(['user']);
             },
         },
     );
-    const handleFollow = () => {
-        mutation.mutate(relationshipData.includes(currentUser.id));
-    };
-    return (
-        <div className="profile">
-            {isLoading ? (
-                'loading'
-            ) : (
-                <Fragment>
-                    <div className="images">
-                        <img src={data.coverPic} alt="" className="cover" />
-                        <img src={data.profilePic} alt="" className="profilePic" />
-                    </div>
-                    <div className="profileContainer">
-                        <div className="uInfo">
-                            <div className="left">
-                                <a href="http://facebook.com">
-                                    <FacebookTwoToneIcon fontSize="large" />
-                                </a>
-                                <a href="http://facebook.com">
-                                    <InstagramIcon fontSize="large" />
-                                </a>
-                                <a href="http://facebook.com">
-                                    <TwitterIcon fontSize="large" />
-                                </a>
-                                <a href="http://facebook.com">
-                                    <LinkedInIcon fontSize="large" />
-                                </a>
-                                <a href="http://facebook.com">
-                                    <PinterestIcon fontSize="large" />
-                                </a>
-                            </div>
-                            <div className="center">
-                                <span>{data.name}</span>
-                                <div className="info">
-                                    <div className="item">
-                                        <PlaceIcon />
-                                        <span>{data.city}</span>
-                                    </div>
-                                    <div className="item">
-                                        <LanguageIcon />
-                                        <span>{data.website}</span>
-                                    </div>
-                                </div>
-                                {rIsLoading ? (
-                                    'loading'
-                                ) : userId === currentUser ? (
-                                    <button>update</button>
-                                ) : (
-                                    <button onClick={handleFollow}>
-                                        {relationshipData.includes(currentUser.id) ? 'Following' : 'Add follow'}
-                                    </button>
-                                )}
-                            </div>
-                            <div className="right">
-                                <EmailOutlinedIcon />
-                                <MoreVertIcon />
-                            </div>
-                        </div>
-                        <Posts userId ={userId}/>
-                    </div>
-                </Fragment>
-            )}
-        </div>
-    );
-};
 
-export default Profile;
+    const handleClick = async (e) => {
+        e.preventDefault();
+
+        //TODO: find a better way to get image URL
+
+        let coverUrl;
+        let profileUrl;
+        coverUrl = cover ? await upload(cover) : user.coverPic;
+        profileUrl = profile ? await upload(profile) : user.profilePic;
+
+        mutation.mutate({ ...texts, coverPic: coverUrl, profilePic: profileUrl });
+        setOpenUpdate(false);
+        setCover(null);
+        setProfile(null);
+
+        return (
+            <div className="update">
+                <div className="wrapper">
+                    <h1>Update Your Profile</h1>
+                    <form>
+                        <div className="files">
+                            <label htmlFor="cover">
+                                <span>Cover Picture</span>
+                                <div className="imgContainer">
+                                    <img src={cover ? URL.createObjectURL(cover) : '/upload/' + user.coverPic} alt="" />
+                                    <CloudUploadIcon className="icon" />
+                                </div>
+                            </label>
+                            <input
+                                type="file"
+                                id="cover"
+                                style={{ display: 'none' }}
+                                onChange={(e) => setCover(e.target.files[0])}
+                            />
+                            <label htmlFor="profile">
+                                <span>Profile Picture</span>
+                                <div className="imgContainer">
+                                    <img
+                                        src={profile ? URL.createObjectURL(profile) : '/upload/' + user.profilePic}
+                                        alt=""
+                                    />
+                                    <CloudUploadIcon className="icon" />
+                                </div>
+                            </label>
+                            <input
+                                type="file"
+                                id="profile"
+                                style={{ display: 'none' }}
+                                onChange={(e) => setProfile(e.target.files[0])}
+                            />
+                        </div>
+                        <label>Email</label>
+                        <input type="text" value={texts.email} name="email" onChange={handleChange} />
+                        <label>Password</label>
+                        <input type="text" value={texts.password} name="password" onChange={handleChange} />
+                        <label>Name</label>
+                        <input type="text" value={texts.name} name="name" onChange={handleChange} />
+                        <label>Country / City</label>
+                        <input type="text" name="city" value={texts.city} onChange={handleChange} />
+                        <label>Website</label>
+                        <input type="text" name="website" value={texts.website} onChange={handleChange} />
+                        <button onClick={handleClick}>Update</button>
+                    </form>
+                    <button className="close" onClick={() => setOpenUpdate(false)}>
+                        close
+                    </button>
+                </div>
+            </div>
+        );
+    };
+};
+export default Update;
