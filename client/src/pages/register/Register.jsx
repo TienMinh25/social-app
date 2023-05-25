@@ -20,9 +20,17 @@ const Register = () => {
         e.preventDefault();
 
         try {
-            await axios.post('http://localhost:8800/api/auth/register', inputs);
+            if (
+                inputs.username.trim() !== '' &&
+                inputs.email.trim() !== '' &&
+                inputs.password.trim() !== '' &&
+                inputs.name.trim() !== ''
+            ) {
+                await axios.post('http://localhost:8800/api/auth/register', inputs);
+            } else throw new Error('Please enter all the boxes');
         } catch (err) {
-            setErr(err.response.data);
+            if (err.response?.data) setErr(err.response.data);
+            else setErr(err.message);
         }
     };
 

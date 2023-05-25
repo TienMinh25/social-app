@@ -20,10 +20,13 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            await login(inputs);
-            navigate('/');
+            if (inputs.username.trim() !== '' && inputs.password.trim() !== '') {
+                await login(inputs);
+                navigate('/');
+            } else throw new Error('Please enter all the boxes');
         } catch (err) {
-            setErr(err.response.data);
+            if (err.response?.data) setErr(err.response.data);
+            else setErr(err.message);
         }
     };
 

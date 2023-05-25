@@ -8,7 +8,7 @@ const Home = () => {
         <div className="home">
             <Stories />
             <Share />
-            <Posts />
+            <Posts userId={JSON.parse(window.localStorage.getItem('user')).id} />
         </div>
     );
 };
