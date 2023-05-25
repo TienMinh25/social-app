@@ -29,14 +29,14 @@
 
 ### *That is the login and registration page, next we will see the homepage 🏠 and profile page 👨‍🔧*
 
-<img src="https://scontent.fhan14-1.fna.fbcdn.net/v/t1.15752-9/349191349_616667010174102_3709080777609731420_n.png?_nc_cat=101&ccb=1-7&_nc_sid=ae9488&_nc_ohc=EV1UZARKVIcAX-wYIce&_nc_ht=scontent.fhan14-1.fna&oh=03_AdQW2bh2dzb8SjZ-ASqQb4z_FtsBDJOIBG-YBprDthL5Zg&oe=6497593A" width = "450" alt ="Trang homepage""/><img src="https://scontent.fhan14-2.fna.fbcdn.net/v/t1.15752-9/349352040_979639843066324_2912025201514423072_n.png?_nc_cat=100&ccb=1-7&_nc_sid=ae9488&_nc_ohc=zT3kShM3jrsAX-mqVkh&_nc_ht=scontent.fhan14-2.fna&oh=03_AdTD09gDbrG9L-v_VRaj3bQ8lifjTZCgAH4S3D8bVHEfUA&oe=64975985" width = "450" alt ="Trang homepage"/><br>
-                                          &ensp;&ensp;                          ***Trang homepage***
+<img src="https://scontent.fhan14-1.fna.fbcdn.net/v/t1.15752-9/349191349_616667010174102_3709080777609731420_n.png?_nc_cat=101&ccb=1-7&_nc_sid=ae9488&_nc_ohc=EV1UZARKVIcAX-wYIce&_nc_ht=scontent.fhan14-1.fna&oh=03_AdQW2bh2dzb8SjZ-ASqQb4z_FtsBDJOIBG-YBprDthL5Zg&oe=6497593A" width = "450" alt ="Trang homepage"/><img src="https://scontent.fhan14-2.fna.fbcdn.net/v/t1.15752-9/349352040_979639843066324_2912025201514423072_n.png?_nc_cat=100&ccb=1-7&_nc_sid=ae9488&_nc_ohc=zT3kShM3jrsAX-mqVkh&_nc_ht=scontent.fhan14-2.fna&oh=03_AdTD09gDbrG9L-v_VRaj3bQ8lifjTZCgAH4S3D8bVHEfUA&oe=64975985" width = "450" alt ="Trang homepage"/><br>
+                                          &ensp;&ensp;&ensp;&ensp;                          ***Trang homepage***
                                                                     
 <img src="https://scontent.fhan14-3.fna.fbcdn.net/v/t1.15752-9/349213419_1651601348614189_6839693777304232316_n.png?_nc_cat=104&ccb=1-7&_nc_sid=ae9488&_nc_ohc=uOouEerW8bgAX-uEVgD&_nc_ht=scontent.fhan14-3.fna&oh=03_AdSxWbL2d8FzDya9cetEyoZa6-syhkMawZ3ijcfzZHPkjQ&oe=64976534" width = "450" alt ="Trang profile"/><br>
-                                          &ensp;&ensp;                          ***Trang profile***
+                                          &ensp;&ensp;&ensp;&ensp;                          ***Trang profile***
                                                                     
 ### *Finally, let's take a look at dark mode 🌚 and light mode 🌝*
 
-<img src="https://scontent.fhan14-2.fna.fbcdn.net/v/t1.15752-9/349352040_979639843066324_2912025201514423072_n.png?_nc_cat=100&ccb=1-7&_nc_sid=ae9488&_nc_ohc=zT3kShM3jrsAX-mqVkh&_nc_ht=scontent.fhan14-2.fna&oh=03_AdTD09gDbrG9L-v_VRaj3bQ8lifjTZCgAH4S3D8bVHEfUA&oe=64975985" width = "450" alt ="Dark mode" style="{gap: 50px}"/><img src="https://scontent.fhan14-2.fna.fbcdn.net/v/t1.15752-9/348384912_769646851505109_6682349271850573819_n.png?_nc_cat=100&ccb=1-7&_nc_sid=ae9488&_nc_ohc=tVnK6stKxcgAX_w0ShC&_nc_ht=scontent.fhan14-2.fna&oh=03_AdSlkVjJ9Ieg2l4KKLOGY4YCANa-GGyhOeVoP_oDHstJKQ&oe=64974207" width = "450" alt ="Light mode"/>
+<img src="https://scontent.fhan14-2.fna.fbcdn.net/v/t1.15752-9/349352040_979639843066324_2912025201514423072_n.png?_nc_cat=100&ccb=1-7&_nc_sid=ae9488&_nc_ohc=zT3kShM3jrsAX-mqVkh&_nc_ht=scontent.fhan14-2.fna&oh=03_AdTD09gDbrG9L-v_VRaj3bQ8lifjTZCgAH4S3D8bVHEfUA&oe=64975985" width = "450" alt ="Dark mode" style="{gap: 50px}"/>&ensp;&ensp;&ensp;&ensp;<img src="https://scontent.fhan14-2.fna.fbcdn.net/v/t1.15752-9/348384912_769646851505109_6682349271850573819_n.png?_nc_cat=100&ccb=1-7&_nc_sid=ae9488&_nc_ohc=tVnK6stKxcgAX_w0ShC&_nc_ht=scontent.fhan14-2.fna&oh=03_AdSlkVjJ9Ieg2l4KKLOGY4YCANa-GGyhOeVoP_oDHstJKQ&oe=64974207" width = "450" alt ="Light mode"/>
 
 ### That's all, thank you for your interest. Love everyone 🥰🥰🥰
