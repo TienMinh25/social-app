@@ -2,13 +2,13 @@ import { db } from "../connect.js";
 import jwt from "jsonwebtoken";
 
 export const getRelationships = (req, res) => {
-  const q = "SELECT followerUserId FROM relationships WHERE followerUserId = ?";
+  const q = "SELECT followerUserId FROM relationships WHERE followedUserId = ?";
 
   db.query(q, [req.query.followedUserId], (err, data) => {
     if (err) return res.status(500).json(err);
     return res
       .status(200)
-      .json(data.map((relationship) => relationship.followedUserId));
+      .json(data.map((relationship) => relationship.followerUserId));
   });
 };
 
@@ -21,8 +21,8 @@ export const addRelationship = (req, res) => {
 
     const q =
       "INSERT INTO relationships (`followerUserId`,`followedUserId`) VALUES (?)";
-
     const values = [userInfo.id, req.body.userId];
+
     db.query(q, [values], (err, data) => {
       if (err) return res.status(500).json(err);
       return res.status(200).json("Following");

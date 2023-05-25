@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 
 export const getUser = (req, res) => {
   const userId = req.params.userId;
-  const q = "SELECT * FROM users WHERE id = ?";
+  const q = "SELECT * FROM users WHERE id=?";
 
   db.query(q, [userId], (err, data) => {
     if (err) return res.status(500).json(err);
@@ -20,7 +20,7 @@ export const updateUser = (req, res) => {
     if (err) return res.status(403).json("Token is not valid!");
 
     const q =
-      "UPDATE users SET `name`=?, `city` =?,`website`=?,`profilePic`=?, `coverPic`=? WHERE id =?";
+      "UPDATE users SET `name`=?,`city`=?,`website`=?,`profilePic`=?,`coverPic`=? WHERE id=? ";
 
     db.query(
       q,
