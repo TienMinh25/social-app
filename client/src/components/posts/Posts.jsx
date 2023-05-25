@@ -4,8 +4,8 @@ import './posts.scss';
 import { useQuery } from '@tanstack/react-query';
 
 const Posts = () => {
-    const { isLoading, error, data } = useQuery(['posts'], () => {
-        makeRequest.get('/posts').then((res) => {
+    const { isLoading, error, data } = useQuery(['posts'], async () => {
+        await makeRequest.get('/posts/').then((res) => {
             return res.data;
         });
     });
