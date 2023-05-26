@@ -5,19 +5,21 @@
 $themes: (
     light: (
         textColor: #000,
-        bg: white,
+        bg: rgb(255, 255, 255),
         logo: darkblue,
-        bgSoft: #f6f3f3,
+        bgSoft: rgb(246, 243, 243),
         textColorSoft: #555,
+        backgroundColorHover: rgba(34, 34, 34, 0.3),
         border: lightgray,
     ),
     dark: (
         textColor: whitesmoke,
-        bg: #222,
+        bg: rgb(34, 34, 34),
         logo: white,
         bgSoft: #333,
         textColorSoft: lightgray,
         border: #444,
+        backgroundColorHover: rgba(255, 255, 255, 0.3),
     ),
 );
 

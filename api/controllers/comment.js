@@ -6,11 +6,9 @@ export const getComments = (req, res) => {
   const q = `SELECT c.*, u.id AS userId, name, profilePic FROM comments AS c JOIN users AS u ON (u.id = c.userId)
     WHERE c.postId = ? ORDER BY c.createdAt DESC
     `;
-
   const value = parseInt(req.query.postId);
 
-  db.query(q, [...value], (err, data) => {
-    console.log(err);
+  db.query(q, [value], (err, data) => {
     if (err) return res.status(500).json(err);
     return res.status(200).json(data);
   });
@@ -32,7 +30,7 @@ export const addComment = (req, res) => {
       req.body.postId,
     ];
 
-    db.query(q, [...values], (err, data) => {
+    db.query(q, [values], (err, data) => {
       if (err) return res.status(500).json(err);
       return res.status(200).json("Comment has been created.");
     });

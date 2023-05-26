@@ -38,7 +38,9 @@
                     width: 500px;
                     background-color: transparent;
                     color: themed('textColor');
-
+                    outline: none;
+                    padding: 6px 20px;
+                    font-size: 16px;
                     @include mobile {
                         display: none;
                     }

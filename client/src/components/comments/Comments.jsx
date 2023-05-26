@@ -51,8 +51,8 @@ const Comments = ({ postId }) => {
                 ? 'Be the first to comment'
                 : isLoading
                 ? 'loading'
-                : data.map((comment) => (
-                      <div className="comment">
+                : data.map((comment, index) => (
+                      <div className="comment" key={index}>
                           <img src={'/upload/' + comment.profilePic} alt="" />
                           <div className="info">
                               <span>{comment.name}</span>

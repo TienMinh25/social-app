@@ -16,7 +16,6 @@ import { AuthContext } from '../../context/authContext';
 const Post = ({ post }) => {
     const [commentOpen, setCommentOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
-
     const { currentUser } = useContext(AuthContext);
 
     const { isLoading, error, data } = useQuery(['likes', post.id], () =>

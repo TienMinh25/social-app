@@ -45,7 +45,6 @@ export const login = (req, res) => {
       req.body.password,
       data[0].password
     );
-
     if (!checkPassword)
       return res.status(400).json("Wrong password or username!");
 

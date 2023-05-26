@@ -22,11 +22,15 @@ const Navbar = () => {
                 <Link to="/" style={{ textDecoration: 'none' }}>
                     <span>Social Network</span>
                 </Link>
-                <HomeOutlinedIcon />
-                {darkMode ? <WbSunnyOutlinedIcon onClick={toggle} /> : <DarkModeOutlinedIcon onClick={toggle} />}
-                <GridViewOutlinedIcon />
+                <HomeOutlinedIcon style={{ cursor: 'pointer' }} />
+                {darkMode ? (
+                    <WbSunnyOutlinedIcon onClick={toggle} style={{ cursor: 'pointer' }} />
+                ) : (
+                    <DarkModeOutlinedIcon onClick={toggle} style={{ cursor: 'pointer' }} />
+                )}
+                <GridViewOutlinedIcon style={{ cursor: 'pointer' }} />
                 <div className="search">
-                    <SearchOutlinedIcon />
+                    <SearchOutlinedIcon style={{ cursor: 'pointer' }} />
                     <input type="text" placeholder="Search..." />
                 </div>
             </div>
