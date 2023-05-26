@@ -18,7 +18,7 @@ const Navbar = () => {
     const { currentUser } = useContext(AuthContext);
     const [openModal, setOpenModal] = useState(false);
 
-    const handleClick = () => {
+    const handleClick = (e) => {
         setOpenModal(!openModal);
     };
     return (
