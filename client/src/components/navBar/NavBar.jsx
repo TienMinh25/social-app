@@ -27,7 +27,9 @@ const Navbar = () => {
                 <Link to="/" style={{ textDecoration: 'none' }}>
                     <span>Social Network</span>
                 </Link>
-                <HomeOutlinedIcon style={{ cursor: 'pointer' }} />
+                <Link to="/" style={{ textDecoration: 'none' }}>
+                    <HomeOutlinedIcon style={{ cursor: 'pointer' }} />
+                </Link>
                 {darkMode ? (
                     <WbSunnyOutlinedIcon onClick={toggle} style={{ cursor: 'pointer' }} />
                 ) : (
