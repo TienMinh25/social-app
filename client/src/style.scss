@@ -11,6 +11,9 @@ $themes: (
         textColorSoft: #555,
         backgroundColorHover: rgba(34, 34, 34, 0.3),
         border: lightgray,
+        divColorBox: rgb(228, 230, 234),
+        backgroundBlock: #ffffff,
+        lineModalLogout: #ced0d4,
     ),
     dark: (
         textColor: whitesmoke,
@@ -20,6 +23,9 @@ $themes: (
         textColorSoft: lightgray,
         border: #444,
         backgroundColorHover: rgba(255, 255, 255, 0.3),
+        divColorBox: rgb(58, 59, 60),
+        backgroundBlock: #242526,
+        lineModalLogout: #3e4042,
     ),
 );
 

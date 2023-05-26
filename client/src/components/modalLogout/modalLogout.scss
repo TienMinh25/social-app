@@ -1,0 +1,119 @@
+@import '../../style.scss';
+
+.modalLogout {
+    @include themify($themes) {
+        padding: 16px 12px;
+        position: absolute;
+        top: 120%;
+        right: -6px;
+        min-width: 340px;
+        -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        border-radius: 10px;
+        background-color: themed('backgroundBlock');
+        color: themed('textColor');
+        z-index: 200;
+
+        .block1 {
+            -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+            -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+            box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+            border-radius: 10px;
+            display: flex;
+            margin: 4px 16px 16px 16px;
+            flex-direction: column;
+            padding: 8px 12px;
+
+            background-color: themed('backgroundBlock');
+            .userInfo {
+                border-radius: 6px;
+
+                display: flex;
+                align-items: center;
+                padding: 10px 8px;
+                margin-bottom: 6px;
+                &:hover {
+                    cursor: pointer;
+                    background-color: themed('backgroundColorHover');
+                }
+                img {
+                    width: 36px;
+                    height: 36px;
+                    margin-right: 10px;
+                }
+                span {
+                    font-size: 18px;
+                    flex: 1;
+                }
+            }
+
+            hr {
+                background-color: themed('lineModalLogout');
+                width: 96%;
+                margin: auto;
+            }
+            .userAll {
+                margin-top: 6px;
+                border-radius: 6px;
+                &:hover {
+                    cursor: pointer;
+                    background-color: themed('backgroundColorHover');
+                }
+                padding: 8px;
+                span {
+                    font-size: 15px;
+                    color: #1876f2;
+                }
+            }
+        }
+        .block2 {
+            .item {
+                &:hover {
+                    background-color: themed('backgroundColorHover');
+                }
+                border-radius: 6px;
+                display: flex;
+                align-items: center;
+
+                padding: 6px;
+                .icon {
+                    line-height: 100%;
+                    padding: 6px;
+                    margin-right: 10px;
+                    border-radius: 50%;
+                    background-color: themed('divColorBox');
+                    font-size: 18px;
+                    color: themed('colorText');
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .menu {
+                    display: flex;
+                    flex: 1;
+                    align-items: center;
+                    justify-content: flex-end;
+                    line-height: 100%;
+
+                    .item-1 {
+                        line-height: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex: 1;
+                        span {
+                            flex: 1;
+                            line-height: 100%;
+                            font-size: 16px;
+                        }
+                    }
+                    .item-2 {
+                        color: themed('colorText');
+                        line-height: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

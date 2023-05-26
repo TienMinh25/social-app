@@ -8,14 +8,19 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { DarkModeContext } from '../../context/darkModeContext';
 import { AuthContext } from '../../context/authContext';
+import ModalLogout from '../modalLogout/ModalLogout';
 
 const Navbar = () => {
     const { toggle, darkMode } = useContext(DarkModeContext);
     const { currentUser } = useContext(AuthContext);
+    const [openModal, setOpenModal] = useState(false);
 
+    const handleClick = () => {
+        setOpenModal(!openModal);
+    };
     return (
         <div className="navbar">
             <div className="left">
@@ -38,9 +43,15 @@ const Navbar = () => {
                 <PersonOutlinedIcon />
                 <EmailOutlinedIcon />
                 <NotificationsOutlinedIcon />
-                <div className="user">
+                <div className="user" onClick={handleClick}>
                     <img src={'/upload/' + currentUser.profilePic} alt="" />
                     <span>{currentUser.name}</span>
+                    {openModal && (
+                        <ModalLogout
+                            setOpenModal={setOpenModal}
+                            user={JSON.parse(window.localStorage.getItem('user'))}
+                        />
+                    )}
                 </div>
             </div>
         </div>
