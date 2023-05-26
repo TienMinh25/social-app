@@ -27,7 +27,7 @@ const Navbar = () => {
                 <Link to="/" style={{ textDecoration: 'none' }}>
                     <span>Social Network</span>
                 </Link>
-                <Link to="/" style={{ textDecoration: 'none' }}>
+                <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
                     <HomeOutlinedIcon style={{ cursor: 'pointer' }} />
                 </Link>
                 {darkMode ? (
