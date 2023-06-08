@@ -20,12 +20,11 @@ import { Link } from 'react-router-dom';
 
 const LeftBar = () => {
     const { currentUser } = useContext(AuthContext);
-    const userId = JSON.parse(window.localStorage.getItem('user')).id;
     return (
         <div className="leftBar">
             <div className="container">
                 <div className="menu">
-                    <Link to={`/profile/${userId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <Link to={`/profile/${currentUser.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                         <div className="user">
                             <img src={'/upload/' + currentUser.profilePic} alt="" />
 
